@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ControlStockWebApp.Models.Entrada>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Entradas</h1>
+
+<p>
+    <a asp-action= "Create" class="btn btn-primary" >Realizar Entrada</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cod_Entrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornecedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.qtde_Entrada)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cod_Entrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.FornecedorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.ProdutoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qtde_Entrada)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EntradaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EntradaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EntradaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
